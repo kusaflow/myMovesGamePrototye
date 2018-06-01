@@ -1,0 +1,52 @@
+the algo for removing the doubles in the array
+
+ for (int i=0; i< MainGame.dataGivenX.size(); i++){
+            for (int j=i+1; j< MainGame.dataGivenX.size(); j++){
+                if(MainGame.dataGivenX.get(i).equals(MainGame.dataGivenX.get(j)) && MainGame.dataGivenY.get(i).equals(MainGame.dataGivenY.get(j))){
+                    System.out.println(MainGame.dataGivenX.get(j) + "\t\t\t\t" + MainGame.dataGivenY.get(j));
+                    MainGame.dataGivenX.remove(j);
+                    MainGame.dataGivenY.remove(j);
+                }
+            }
+ }
+
+ the algo 11 for sorting
+ //now the sorted data is in downloading process
+     DataToFile = "";
+     DataToFile+=Integer.toString(MainGame.dataGivenX.get(0));
+     DataToFile+="\t";
+     DataToFile+=Integer.toString(MainGame.HEIGHT -MainGame.dataGivenY.get(0));
+     DataToFile+="\n";
+     for (int i = 0; i < MainGame.dataGivenX.size(); i++) {
+         if (MainGame.dataGivenY.get(i + 1) > MainGame.dataGivenY.get(comparingVal) - difference &&
+                 MainGame.dataGivenY.get(i + 1) < MainGame.dataGivenY.get(comparingVal) + difference) {
+             //Forward
+             if (MainGame.dataGivenX.get(comparingVal) < MainGame.dataGivenX.get(i + 1)) {
+                 System.out.println("Forward");
+             }
+             //backwards
+             else if (MainGame.dataGivenX.get(comparingVal) > MainGame.dataGivenX.get(i + 1)) {
+                 System.out.println("backwards");
+             }
+         }else if (MainGame.dataGivenX.get(i + 1) > MainGame.dataGivenX.get(comparingVal) - difference &&
+                 MainGame.dataGivenX.get(i + 1) < MainGame.dataGivenX.get(comparingVal) + difference) {
+             //up
+             if (MainGame.dataGivenY.get(comparingVal) > MainGame.dataGivenY.get(i + 1)) {
+                 System.out.println("Up");
+             }
+             //Down
+             else if (MainGame.dataGivenY.get(comparingVal) < MainGame.dataGivenY.get(i + 1)) {
+                 System.out.println("Down");
+             }
+         }else{
+             comparingVal = i;
+             DataToFile+=Integer.toString(MainGame.dataGivenX.get(comparingVal));
+             DataToFile+="\t";
+             DataToFile+=Integer.toString(MainGame.HEIGHT - MainGame.dataGivenY.get(comparingVal));
+             DataToFile+="\n";
+         }
+     }
+
+ //
+
+
