@@ -34,6 +34,7 @@ public class InputTaker implements InputProcessor{
         ///System.out.println(screenX);
         MainGame.dataGivenX.add(screenX);
         MainGame.dataGivenY.add(screenY);
+        
         return false;
     }
 
