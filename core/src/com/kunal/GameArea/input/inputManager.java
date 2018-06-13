@@ -59,6 +59,7 @@ public class inputManager {
     private void SortedDataToFile(){
         int i=0;
         compareVal =0;
+        direction = 0;
         //now the sorted data is in downloading process
         DataToFile = "";
 
@@ -213,7 +214,7 @@ public class inputManager {
                         continue;
             }
 
-            if(compareVal ==0){
+            /*if(compareVal ==0){
                 if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) < 5 ||
                         MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i) < 5 &&
                                 (MainGame.HEIGHT - MainGame.dataGivenY.get(i)) - (MainGame.HEIGHT - MainGame.dataGivenY.get(i-1)) < 5 ||
@@ -229,7 +230,7 @@ public class inputManager {
                 }
                 compareVal = 0;
             }
-
+*/
 
             //when the condition turns to be wrong
             //or in other words the direction changes
@@ -240,8 +241,8 @@ public class inputManager {
             DataToFile+=Integer.toString(direction);
             DataToFile+="\n";
 
-            temp1 = MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(0);
-            temp2 = (MainGame.HEIGHT -MainGame.dataGivenY.get(i)) - (MainGame.HEIGHT -MainGame.dataGivenY.get(0));
+            temp1 = MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1);
+            temp2 = (MainGame.HEIGHT -MainGame.dataGivenY.get(i)) - (MainGame.HEIGHT -MainGame.dataGivenY.get(i-1));
 
 
             //positive side of y axis
