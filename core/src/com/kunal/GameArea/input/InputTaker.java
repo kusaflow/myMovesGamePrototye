@@ -24,14 +24,16 @@ public class InputTaker implements InputProcessor{
         try {
             im.DataSorting();
         } catch (Exception e) {
-
+            System.out.println(e);
         }
+
+
         return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        ///System.out.println(screenX);
+        //System.out.println(screenY);
         MainGame.dataGivenX.add(screenX);
         MainGame.dataGivenY.add(screenY);
 
