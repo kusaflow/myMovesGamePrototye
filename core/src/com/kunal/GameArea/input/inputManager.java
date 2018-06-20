@@ -15,10 +15,6 @@ public class inputManager {
     //the direction of the projection
     byte direction = 0;
 
-    //slope
-    float slope =0;
-
-
     //comparable value
     int compareVal =0;
 
@@ -57,92 +53,56 @@ public class inputManager {
         filewriting("testing/raw",false);
     }
 
-    private void SortedDataToFile(){
+    private void SortedDataToFile() {
         int i = 0;
+        boolean straight;
         compareVal = 0;
         direction = 0;
         //now the sorted data is in downloading process
         DataToFile = "";
-        slope =0;
 
+        /*
+        Directions are :
+            ----------------------------
+            1st quadrant is 1
+            2nd quadrant is 2
+            3rd quadrant is 3
+            4tg quadrant is 4
+            ----------------------------
+            x axis positive Straight line is 5
+            y axis positive straight line is 6
+            x axis negative straight line is 7
+            y axis negative straight line is 8
+            ----------------------------
 
+        */
         for (i = 1; i < MainGame.dataGivenX.size(); i++) {
-            //slope formula user
-            // m(slope) = y2 - y1/x2-x1
+            straight = false;
+            /*
+            for checking linearity(Straighline)
+            if found so then no more condition is eecuter and
+            data is saved to the file and process restarts
+            */
+            //for positive x axis
+            if(direction == 1 || direction == 4 || direction == 5){
+                //if already a stright line with code 5
+                if(direction == 5)
+                    if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) > 0)//goiing positive x axis
+                        if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i - 1) <= compareVal)//in range of y axis
+                            continue;
 
-            //phase one 1
-            //+ve x axis and alter y axis
-            if(direction == 1){
-                //upwards on x axis
-                if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1) >= 0){
-                    slope = (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1))/
-                            (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1));
-                }
-                //downwards on x axis
-                else{
-                    slope = (MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i))/
-                            (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1));
-                }
-                if (slope <= 1.0)
-                    continue;
-            }
+                //if not belongs to direction code 5 then chnecking for it
 
-            //phase two 2
-            //+ve y axis and alter x axis
-            else if(direction == 2){
-                //right side on x axis
-                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) >= 0){
-                    slope = (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1))/
-                            (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1));
-                }
-                //left side on x axis
-                else{
-                    slope = (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1
-                    )) / (MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i));
-                }
-                if (slope > 1.0)
-                    continue;
-            }
 
-            //phase three 3
-            //-ve x axis and alter y axis
-            else if(direction == 3){
-                //upwards on x axis
-                if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1) >= 0){
-                    slope = (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1))/
-                            (MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i));
-                }
-                //downwards on x axis
-                else{
-                    slope = (MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i
-                    )) / (MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i));
-                }
-                if (slope <= 1.0)
-                    continue;
-            }
 
-            //phase four 4
-            //-ve y axis and alter x axis
-            else if(direction == 4){
-                //right side on x axis
-                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) >= 0){
-                    slope = (MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i))/
-                            (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1));
-                }
-                //left side on x axis
-                else{
-                    slope = (MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i
-                    )) / (MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i));
-                }
-                if (slope > 1.0)
-                    continue;
             }
 
 
-            System.out.println(i);
 
-            //when the condition turns to be wrong
-            //or in other words the direction changes
+            /*
+            when the condition turns to be wrong
+            or in other words the direction changes
+            */
             DataToFile+=Integer.toString(MainGame.dataGivenX.get(compareVal));
             DataToFile+="\t";
             DataToFile+=Integer.toString(MainGame.HEIGHT - MainGame.dataGivenY.get(compareVal));
@@ -150,47 +110,15 @@ public class inputManager {
             DataToFile+=Integer.toString(direction);
             DataToFile+="\n";
 
-            //incrementing by 1
-            i++;
+            /*
+            New direction provider
+            also if the line is straight then the direction providing is done above not here
+            if not straight then here new direction is provided
+            */
+            if(!straight){
 
-        //assigning the new direction
-        //positive x axis
-            if((MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-2)) >=0){
-                //positive y axis
-                if((MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-2)) >=0)
-                    slope = (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-2))/
-                            (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-2));
-                //negative y axis
-                else
-                    slope = (MainGame.dataGivenY.get(i-2) - MainGame.dataGivenY.get(i))/
-                            (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-2));
-                if(slope <= 1.0)
-                    direction = 1;
-                else
-                    if((MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-2)) >= 0)
-                        direction = 2;
-                    else
-                        direction = 4;
             }
-            //negative x axis
-            else{
-                //positive y axis
-                if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-2) >= 0)
-                    slope = (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-2))/
-                            (MainGame.dataGivenX.get(i-2) - MainGame.dataGivenX.get(i));
-                //negative y axis
-                else
-                    slope = (MainGame.dataGivenY.get(i-2) - MainGame.dataGivenY.get(i))/
-                            (MainGame.dataGivenX.get(i-2) - MainGame.dataGivenX.get(i));
 
-                if(slope <= 1.0)
-                    direction = 3;
-                else
-                if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-2) >= 0)
-                    direction = 2;
-                else
-                    direction = 4;
-            }
         }
 
 

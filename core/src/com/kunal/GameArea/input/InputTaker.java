@@ -21,14 +21,11 @@ public class InputTaker implements InputProcessor{
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        try {
-            im.DataSorting();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        im.DataSorting();
 
 
-        return false;
+
+        return true;
     }
 
     @Override
