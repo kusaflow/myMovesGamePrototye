@@ -55,11 +55,11 @@ public class inputManager {
 
     private void SortedDataToFile() {
         int i = 0;
-        boolean straight;
-        compareVal = 0;
+        compareVal = 20;
         direction = 0;
         //now the sorted data is in downloading process
         DataToFile = "";
+        int StraighnessStartFrom =0;
 
         /*
         Directions are :
@@ -67,7 +67,7 @@ public class inputManager {
             1st quadrant is 1
             2nd quadrant is 2
             3rd quadrant is 3
-            4tg quadrant is 4
+            4th quadrant is 4
             ----------------------------
             x axis positive Straight line is 5
             y axis positive straight line is 6
@@ -76,48 +76,125 @@ public class inputManager {
             ----------------------------
 
         */
+        direction =6;
         for (i = 1; i < MainGame.dataGivenX.size(); i++) {
-            straight = false;
-            /*
-            for checking linearity(Straighline)
-            if found so then no more condition is eecuter and
-            data is saved to the file and process restarts
-            */
-            //for positive x axis
-            if(direction == 1 || direction == 4 || direction == 5){
-                //if already a stright line with code 5
-                if(direction == 5)
-                    if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) > 0)//goiing positive x axis
-                        if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i - 1) <= compareVal)//in range of y axis
+
+            //for positive x axis Striaght line code : 5
+            if(direction == 5) {
+                if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i - 1) > 0) {//goiing positive x axis
+                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(StraighnessStartFrom) >= 0) {//in positive direction of y axis
+                        if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(StraighnessStartFrom) <= compareVal) //in range
                             continue;
+                    }else{//in negative
+                        if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i) <= compareVal) {
+                            continue;
+                        }
+                    }
+                }
+            }
 
-                //if not belongs to direction code 5 then chnecking for it
+            //for positive y axis Striaght line code : 6
+            if(direction == 6) {
+                if (MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i) > 0) {//goiing positive y axis
+                    if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i) >= 0) {//in positive direction of x axis
+                        if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i) <= compareVal) //in range
+                            continue;
+                    }else{//in negative
+                        if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(StraighnessStartFrom) <= compareVal) {
+                            continue;
+                        }
+                    }
+                }
+            }
 
+            //for negative x axis Striaght line code : 7
+            if(direction == 7) {
+                if (MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i) > 0) {//goiing positive x axis
+                    if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i) >= 0) {//in positive direction of y axis
+                        if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i) <= compareVal) //in range
+                            continue;
+                    }else{//in negative
+                        if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(StraighnessStartFrom) <= compareVal) {
+                            continue;
+                        }
+                    }
+                }
+            }
 
+            //for negative y axis Striaght line code : 8
+            if(direction == 8) {
+                if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i - 1) > 0) {//goiing positive y axis
+                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(StraighnessStartFrom) >= 0) {//in positive direction of x axis
+                        if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(StraighnessStartFrom) <= compareVal) //in range
+                            continue;
+                    }else{//in negative
+                        if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i) <= compareVal) {
+                            continue;
+                        }
+                    }
+                }
 
             }
 
+            //first quadrant code : 1
+            if(direction ==1 ){
+                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) >= 0)
+                    if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1) >= 0)
+                        continue;
+            }
+
+            //second quadrant code : 2
+            if(direction ==2 ){
+                if(MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i) >= 0)
+                    if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1) >= 0)
+                        continue;
+            }
+
+            //third quadrant code : 3
+            if(direction ==3 ){
+                if(MainGame.dataGivenX.get(i-1) - MainGame.dataGivenX.get(i) >= 0)
+                    if(MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i) >= 0)
+                        continue;
+            }
+
+            //forth quadrant code : 4
+            if(direction ==4 ){
+                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) >= 0)
+                    if(MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i) >= 0)
+                        continue;
+            }
 
 
             /*
-            when the condition turns to be wrong
+            when the condition turns to be wrongq
             or in other words the direction changes
             */
-            DataToFile+=Integer.toString(MainGame.dataGivenX.get(compareVal));
+            DataToFile+=Integer.toString(MainGame.dataGivenX.get(i-1));
             DataToFile+="\t";
-            DataToFile+=Integer.toString(MainGame.HEIGHT - MainGame.dataGivenY.get(compareVal));
+            DataToFile+=Integer.toString(MainGame.HEIGHT - MainGame.dataGivenY.get(i-1));
             DataToFile+="\t";
             DataToFile+=Integer.toString(direction);
             DataToFile+="\n";
 
+            //new Value assigner
             /*
-            New direction provider
-            also if the line is straight then the direction providing is done above not here
-            if not straight then here new direction is provided
-            */
-            if(!straight){
+            first checking for straightness
+             */
 
-            }
+    //---------------------for positive x axis Striaght line code : 5
+            //first checking for consecutive movement in x axis
+            if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i - 1) > 0)
+                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i - 2) > 0)
+                    if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i - 3) > 0)
+                        //now checking for the y axis values in range
+                        if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i - 1) > 0){
+                            if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i - 1) > 0){}
+                        }else{
+
+                        }
+
+
+
 
         }
 
