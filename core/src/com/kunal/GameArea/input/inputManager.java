@@ -62,21 +62,37 @@ public class inputManager {
         float slope =0;
 
         direction =1;
-        for (i = 1; i < MainGame.dataGivenX.size(); i++) {
+        for (i = 0; i < MainGame.dataGivenX.size()-1; i++) {
             if(direction == 1 ){
-                if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1) >= 0){
-                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1) >= 0){
-                        slope = (float) ((MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i-1))/
-                                (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1)));
+                if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) >= 0){
+                    if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) >= 0){
+                        slope = (float) ((MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i))/
+                                (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i)));
                     }else{
-                        slope = (float) ((MainGame.dataGivenY.get(i-1) - MainGame.dataGivenY.get(i))/
-                                (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i-1)));
+                        slope = (float) ((MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+1))/
+                                (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i)));
                     }
-                    if(slope <= 0) {
+
+                    if(slope <= 1) {
                         continue;
                     }
                 }
+
             }else if(direction == 2){
+                if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) >= 0){
+                    if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) >= 0){
+                        slope = (float) ((MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i))/
+                                (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i)));
+                    }else{
+                        slope = (float) ((MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+1))/
+                                (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i)));
+                    }
+
+                    if(slope <= 1) {
+                        continue;
+                    }
+                }
+
 
             }else if(direction == 3){
 
