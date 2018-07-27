@@ -21,8 +21,19 @@ public class InputTaker implements InputProcessor{
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        im.DataSorting();
+        //in this area we are making the values divisible to 3
+        //--adding 1 value to make it divisible to 3
+        if(MainGame.dataGivenX.size() % 3 == 2){
+            MainGame.dataGivenX.add(MainGame.dataGivenX.get(MainGame.dataGivenX.size()-1));
+            MainGame.dataGivenY.add(MainGame.dataGivenY.get(MainGame.dataGivenY.size()-1));
+        }
+        //removing one value
+        else if(MainGame.dataGivenX.size() % 3 == 1){
+            MainGame.dataGivenX.remove(MainGame.dataGivenX.get(MainGame.dataGivenX.size()-1));
+            MainGame.dataGivenY.remove(MainGame.dataGivenY.get(MainGame.dataGivenY.size()-1));
+        }
 
+        im.DataSorting();
 
 
         return true;
