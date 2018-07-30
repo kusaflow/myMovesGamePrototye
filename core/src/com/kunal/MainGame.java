@@ -21,10 +21,11 @@ public class MainGame extends Game {
 
 	public static float refreshRate = 60;
 
-	public static Body kusa;
+	//whole character
+	public static Body Front_foot, Front_leg;
 
     //Masks
-    public static final short Bit_kusa= 1;
+    public static final short Bit_Player= 1;
     public static final short Bit_land = 2;
     public static final short Bit_enimes = 4;
 

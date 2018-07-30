@@ -76,17 +76,17 @@ public class inputManager {
             ----------------------------
 
         */
-        direction =0;
+        //direction =0;
         for (i = 0; i < MainGame.dataGivenX.size()-1; i++) {
 
             //for positive x axis Striaght line code : 5
-            if(direction == 5) {
-                if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) >= 0) {//goiing positive x axis
-                    if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(StraighnessStartFrom) >= 0) {//in positive direction of y axis
-                        if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(StraighnessStartFrom) <= compareVal) //in range
+            if (direction == 5) {
+                if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(i) >= 0) {//goiing positive x axis
+                    if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(StraighnessStartFrom) >= 0) {//in positive direction of y axis
+                        if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(StraighnessStartFrom) <= compareVal) //in range
                             continue;
-                    }else{//in negative
-                        if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i+1) <= compareVal) {
+                    } else {//in negative
+                        if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i + 1) <= compareVal) {
                             continue;
                         }
                     }
@@ -94,13 +94,13 @@ public class inputManager {
             }
 
             //for positive y axis Striaght line code : 6
-            if(direction == 6) {
-                if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+1) > 0) {//goiing positive y axis
-                    if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i+1) >= 0) {//in positive direction of x axis
-                        if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i+1) <= compareVal) //in range
+            if (direction == 6) {
+                if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 1) > 0) {//goiing positive y axis
+                    if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i + 1) >= 0) {//in positive direction of x axis
+                        if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i + 1) <= compareVal) //in range
                             continue;
-                    }else{//in negative
-                        if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(StraighnessStartFrom) <= compareVal) {
+                    } else {//in negative
+                        if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(StraighnessStartFrom) <= compareVal) {
                             continue;
                         }
                     }
@@ -108,13 +108,13 @@ public class inputManager {
             }
 
             //for negative x axis Striaght line code : 7
-            if(direction == 7) {
-                if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+1) > 0) {//goiing positive x axis
-                    if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i+1) >= 0) {//in positive direction of y axis
-                        if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i+1) <= compareVal) //in range
+            if (direction == 7) {
+                if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 1) > 0) {//goiing positive x axis
+                    if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i + 1) >= 0) {//in positive direction of y axis
+                        if (MainGame.dataGivenY.get(StraighnessStartFrom) - MainGame.dataGivenY.get(i + 1) <= compareVal) //in range
                             continue;
-                    }else{//in negative
-                        if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(StraighnessStartFrom) <= compareVal) {
+                    } else {//in negative
+                        if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(StraighnessStartFrom) <= compareVal) {
                             continue;
                         }
                     }
@@ -123,13 +123,13 @@ public class inputManager {
             }
 
             //for negative y axis Striaght line code : 8
-            if(direction == 8) {
-                if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) > 0) {//goiing positive y axis
-                    if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(StraighnessStartFrom) >= 0) {//in positive direction of x axis
-                        if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(StraighnessStartFrom) <= compareVal) //in range
+            if (direction == 8) {
+                if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(i) > 0) {//goiing positive y axis
+                    if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(StraighnessStartFrom) >= 0) {//in positive direction of x axis
+                        if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(StraighnessStartFrom) <= compareVal) //in range
                             continue;
-                    }else{//in negative
-                        if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i+1) <= compareVal) {
+                    } else {//in negative
+                        if (MainGame.dataGivenX.get(StraighnessStartFrom) - MainGame.dataGivenX.get(i + 1) <= compareVal) {
                             continue;
                         }
                     }
@@ -175,56 +175,61 @@ public class inputManager {
             when the condition turns to be wrongq
             or in other words the direction changes
             */
-            DataToFile+=Integer.toString(MainGame.dataGivenX.get(i));
-            DataToFile+="\t";
-            DataToFile+=Integer.toString(MainGame.HEIGHT - MainGame.dataGivenY.get(i));
-            DataToFile+="\t";
-            DataToFile+=Integer.toString(direction);
-            DataToFile+="\n";
 
+            DataToFile += Integer.toString(MainGame.dataGivenX.get(i));
+            DataToFile += "\t";
+            DataToFile += Integer.toString(MainGame.HEIGHT - MainGame.dataGivenY.get(i));
+            DataToFile += "\t";
+            DataToFile += Integer.toString(direction);
+            DataToFile += "\n";
             //new Value assigner
             /*
             first checking for straightness
              */
 
             //---------------------for positive x axis Striaght line code : 5
-            if(direction != 5){
-                // straigtness level 1
-                if(MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) > 0){
+
+            // straigtness level 1
+            if (direction != 5) {
+                if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(i) > 0) {
                     // straigtness level 2
-                    if(MainGame.dataGivenX.get(i+3) - MainGame.dataGivenX.get(i) > 0){
+                    if (MainGame.dataGivenX.get(i + 3) - MainGame.dataGivenX.get(i) > 0) {
 
                         //checking for positive or negative direction
-                        if(MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) >= 0){
-                            if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) <= compareVal) {
-                                if(MainGame.dataGivenY.get(i+3) - MainGame.dataGivenY.get(i) >= 0){
-                                    if (MainGame.dataGivenY.get(i+3) - MainGame.dataGivenY.get(i) <= compareVal) {
+                        if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(i) >= 0) {
+                            if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(i) <= compareVal) {
+                                if (MainGame.dataGivenY.get(i + 3) - MainGame.dataGivenY.get(i) >= 0) {
+                                    if (MainGame.dataGivenY.get(i + 3) - MainGame.dataGivenY.get(i) <= compareVal) {
                                         direction = 5;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+3) <= compareVal) {
-                                        direction =5;
+                                else {
+                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 3) <= compareVal) {
+                                        direction = 5;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
-                         //other direction
-                        }else {
-                            if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+1) <= compareVal) {
-                                if(MainGame.dataGivenY.get(i+3) - MainGame.dataGivenY.get(i) >= 0){
-                                    if (MainGame.dataGivenY.get(i+3) - MainGame.dataGivenY.get(i) <= compareVal) {
+                            //other direction
+                        } else {
+                            if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 1) <= compareVal) {
+                                if (MainGame.dataGivenY.get(i + 3) - MainGame.dataGivenY.get(i) >= 0) {
+                                    if (MainGame.dataGivenY.get(i + 3) - MainGame.dataGivenY.get(i) <= compareVal) {
                                         direction = 5;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+3) <= compareVal) {
-                                        direction =5;
+                                else {
+                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 3) <= compareVal) {
+                                        direction = 5;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
@@ -235,90 +240,97 @@ public class inputManager {
             }
 
             //---------------------for positive y axis Striaght line code : 6
-            else if(direction != 6){
+            if (direction != 6) {
                 // straigtness level 1
-                if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+1) > 0){
+                if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 1) > 0) {
                     // straigtness level 2
-                    if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+3) > 0){
+                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 3) > 0) {
 
                         //checking for positive or negative direction
-                        if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+1) >= 0){
-                            if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+1) <= compareVal) {
-                                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+3) >= 0){
-                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+3) <= compareVal) {
+                        if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 1) >= 0) {
+                            if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 1) <= compareVal) {
+                                if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 3) >= 0) {
+                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 3) <= compareVal) {
                                         direction = 6;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenX.get(i+3) - MainGame.dataGivenX.get(i) <= compareVal) {
-                                        direction =6;
+                                else {
+                                    if (MainGame.dataGivenX.get(i + 3) - MainGame.dataGivenX.get(i) <= compareVal) {
+                                        direction = 6;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
                             //other direction
-                        }else {
-                            if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) <= compareVal) {
-                                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+3) >= 0){
-                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+3) <= compareVal) {
+                        } else {
+                            if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(i) <= compareVal) {
+                                if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 3) >= 0) {
+                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 3) <= compareVal) {
                                         direction = 6;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenX.get(i+3) - MainGame.dataGivenX.get(i) <= compareVal) {
-                                        direction =6;
+                                else {
+                                    if (MainGame.dataGivenX.get(i + 3) - MainGame.dataGivenX.get(i) <= compareVal) {
+                                        direction = 6;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
                         }
                     }
                 }
-
             }
 
             //---------------------for negative x axis Striaght line code : 7
-            else if(direction != 7){
+            if (direction != 7) {
                 // straigtness level 1
-                if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+1) > 0){
+                if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 1) > 0) {
                     // straigtness level 2
-                    if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+3) > 0){
+                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 3) > 0) {
 
                         //checking for positive or negative direction
-                        if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+1) >= 0){
-                            if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+1) <= compareVal) {
-                                if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+3) >= 0){
-                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+3) <= compareVal) {
+                        if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 1) >= 0) {
+                            if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 1) <= compareVal) {
+                                if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 3) >= 0) {
+                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 3) <= compareVal) {
                                         direction = 7;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenY.get(i+3) - MainGame.dataGivenY.get(i) <= compareVal) {
-                                        direction =7;
+                                else {
+                                    if (MainGame.dataGivenY.get(i + 3) - MainGame.dataGivenY.get(i) <= compareVal) {
+                                        direction = 7;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
                             //other direction
-                        }else {
-                            if (MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) <= compareVal) {
-                                if(MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+3) >= 0){
-                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i+3) <= compareVal) {
+                        } else {
+                            if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(i) <= compareVal) {
+                                if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 3) >= 0) {
+                                    if (MainGame.dataGivenY.get(i) - MainGame.dataGivenY.get(i + 3) <= compareVal) {
                                         direction = 7;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenY.get(i+3) - MainGame.dataGivenY.get(i) <= compareVal) {
-                                        direction =7;
+                                else {
+                                    if (MainGame.dataGivenY.get(i + 3) - MainGame.dataGivenY.get(i) <= compareVal) {
+                                        direction = 7;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
@@ -329,43 +341,47 @@ public class inputManager {
             }
 
             //---------------------for negative x axis Striaght line code : 8
-            else if(direction != 8){
+            if (direction != 8) {
                 // straigtness level 1
-                if(MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) > 0){
+                if (MainGame.dataGivenY.get(i + 1) - MainGame.dataGivenY.get(i) > 0) {
                     // straigtness level 2
-                    if(MainGame.dataGivenY.get(i+3) - MainGame.dataGivenY.get(i) > 0){
+                    if (MainGame.dataGivenY.get(i + 3) - MainGame.dataGivenY.get(i) > 0) {
 
                         //checking for positive or negative direction
-                        if(MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) >= 0){
-                            if (MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) <= compareVal) {
-                                if(MainGame.dataGivenX.get(i+3) - MainGame.dataGivenX.get(i) >= 0){
-                                    if (MainGame.dataGivenX.get(i+3) - MainGame.dataGivenX.get(i) <= compareVal) {
+                        if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(i) >= 0) {
+                            if (MainGame.dataGivenX.get(i + 1) - MainGame.dataGivenX.get(i) <= compareVal) {
+                                if (MainGame.dataGivenX.get(i + 3) - MainGame.dataGivenX.get(i) >= 0) {
+                                    if (MainGame.dataGivenX.get(i + 3) - MainGame.dataGivenX.get(i) <= compareVal) {
                                         direction = 8;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+3) <= compareVal) {
-                                        direction =8;
+                                else {
+                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 3) <= compareVal) {
+                                        direction = 8;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
                             //other direction
-                        }else {
-                            if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+1) <= compareVal) {
-                                if(MainGame.dataGivenX.get(i+3) - MainGame.dataGivenX.get(i) >= 0){
-                                    if (MainGame.dataGivenX.get(i+3) - MainGame.dataGivenX.get(i) <= compareVal) {
+                        } else {
+                            if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 1) <= compareVal) {
+                                if (MainGame.dataGivenX.get(i + 3) - MainGame.dataGivenX.get(i) >= 0) {
+                                    if (MainGame.dataGivenX.get(i + 3) - MainGame.dataGivenX.get(i) <= compareVal) {
                                         direction = 8;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                                 //other direction
-                                else{
-                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+3) <= compareVal) {
-                                        direction =8;
+                                else {
+                                    if (MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i + 3) <= compareVal) {
+                                        direction = 8;
                                         StraighnessStartFrom = i;
+                                        continue;
                                     }
                                 }
                             }
@@ -374,11 +390,10 @@ public class inputManager {
                 }
             }
 
-            //any other direction then
+            /*//any other direction then
             else {
 
-            }
-
+            }*/
 
 
         }

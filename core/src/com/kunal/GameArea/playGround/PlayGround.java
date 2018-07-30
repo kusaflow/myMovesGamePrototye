@@ -1,6 +1,7 @@
-package com.kunal.GameArea;
+package com.kunal.GameArea.playGround;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -33,16 +34,30 @@ public class PlayGround implements Screen{
         b2dr = new Box2DDebugRenderer();
 
         init();
+        //joints();
     }
 
     private void init(){
         BodyGeneraton.BodyAssemble(world, true, "land", new Vector2(0,-2),
-                new Vector2(500,5), game.Bit_land, (short)( game.Bit_enimes | game.Bit_kusa));
+                new Vector2(500,5), game.Bit_land, (short)( game.Bit_enimes | game.Bit_Player));
+
+        MainGame.Front_foot = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(0,10),
+                new Vector2(5,5), game.Bit_Player, (short)(game.Bit_enimes | game.Bit_land | game.Bit_Player));
+
+        MainGame.Front_leg = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(10,20),
+                new Vector2(10,2), game.Bit_Player, (short)(game.Bit_enimes | game.Bit_land | game.Bit_Player));
 
 
-        game.kusa = BodyGeneraton.BodyAssemble(world, false, "land", new Vector2(0,100),
+
+        /*game.kusa = BodyGeneraton.BodyAssemble(world, false, "land", new Vector2(0,100),
                 new Vector2(10,10), game.Bit_kusa, (short)( game.Bit_enimes | game.Bit_land));
+        */
+
+
+
     }
+
+
 
     @Override
     public void show() {
@@ -63,14 +78,15 @@ public class PlayGround implements Screen{
         input();
 
         //update of world
-        world.step(1 / MainGame.refreshRate, 6, 2);;
+        if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
+            world.step(1 / MainGame.refreshRate, 6, 2);;
         game.batch.setProjectionMatrix(cam.combined);
 
 
         //camera Update
         Vector3 campos = cam.position;
-        campos.x = game.kusa.getPosition().x*game.PPM;
-        campos.y = game.kusa.getPosition().y*game.PPM;
+        campos.x = game.Front_foot.getPosition().x*game.PPM;
+        campos.y = game.Front_foot.getPosition().y*game.PPM;
         cam.position.set(campos);
         cam.update();
 
