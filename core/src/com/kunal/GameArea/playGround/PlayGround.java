@@ -22,6 +22,11 @@ public class PlayGround implements Screen{
     private OrthographicCamera cam;
     private Viewport port;
 
+    //body creation module
+    objectCreation objcre;
+    //player moves
+    Player_moves player_moves;
+
     public PlayGround(MainGame game) {
         this.game = game;
         cam = new OrthographicCamera();
@@ -29,32 +34,15 @@ public class PlayGround implements Screen{
 
         port = new FitViewport(game.WIDTH/2, game.HEIGHT/2, cam);
 
-        world = new World(new Vector2(0,-9f), false);
+        world = new World(new Vector2(0,-10f), false);
 
         b2dr = new Box2DDebugRenderer();
 
-        init();
-        //joints();
-    }
+        objcre = new objectCreation(world);
+        objcre.bodycreatation();
+        objcre.joints();
 
-    private void init(){
-        BodyGeneraton.BodyAssemble(world, true, "land", new Vector2(0,-2),
-                new Vector2(500,5), game.Bit_land, (short)( game.Bit_enimes | game.Bit_Player));
-
-        MainGame.Front_foot = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(0,10),
-                new Vector2(5,5), game.Bit_Player, (short)(game.Bit_enimes | game.Bit_land | game.Bit_Player));
-
-        MainGame.Front_leg = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(10,20),
-                new Vector2(10,2), game.Bit_Player, (short)(game.Bit_enimes | game.Bit_land | game.Bit_Player));
-
-
-
-        /*game.kusa = BodyGeneraton.BodyAssemble(world, false, "land", new Vector2(0,100),
-                new Vector2(10,10), game.Bit_kusa, (short)( game.Bit_enimes | game.Bit_land));
-        */
-
-
-
+        player_moves = new Player_moves();
     }
 
 
@@ -76,23 +64,48 @@ public class PlayGround implements Screen{
 
     private void update(float dt) {
         input();
+        player_moves.balancer();
 
         //update of world
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
+        //if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
             world.step(1 / MainGame.refreshRate, 6, 2);;
         game.batch.setProjectionMatrix(cam.combined);
 
 
         //camera Update
         Vector3 campos = cam.position;
-        campos.x = game.Front_foot.getPosition().x*game.PPM;
-        campos.y = game.Front_foot.getPosition().y*game.PPM;
+        campos.x = game.Front_foot1.getPosition().x*game.PPM;
+        campos.y = game.Front_foot1.getPosition().y*game.PPM;
         cam.position.set(campos);
         cam.update();
 
     }
 
     private void input() {
+        float velx =0, vely =0;
+        float velx2 =0, vely2 =0;
+
+        if(Gdx.input.isKeyPressed(Input.Keys.A)){
+            velx -=1;
+        }if(Gdx.input.isKeyPressed(Input.Keys.D)){
+            velx +=1;
+        }if(Gdx.input.isKeyPressed(Input.Keys.S)){
+            vely -=1;
+        }if(Gdx.input.isKeyPressed(Input.Keys.W)){
+            vely +=1;
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+            velx2 -=1;
+        }if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+            velx2 +=1;
+        }if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            vely2 -=1;
+        }if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+            vely2 +=1;
+        }
+
+        MainGame.tester.setLinearVelocity(velx, vely);
+        MainGame.tester2.setLinearVelocity(velx2, vely2);
 
 
     }

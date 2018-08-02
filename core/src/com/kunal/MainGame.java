@@ -21,13 +21,18 @@ public class MainGame extends Game {
 
 	public static float refreshRate = 60;
 
+	public static Body tester , tester2;
 	//whole character
-	public static Body Front_foot, Front_leg;
+    //left part is part 1 and right is part 2
+	//1 is for lower , 2 is upper than 1 and so on
+	public static Body Front_foot1, Front_foot2, Front_leg, Front_Thai, Back_foot1, Back_foot2, Back_leg, Back_Thai, Stomach1, Stomach2, Stomach3, neck, head;
 
     //Masks
-    public static final short Bit_Player= 1;
-    public static final short Bit_land = 2;
-    public static final short Bit_enimes = 4;
+    public static final short Bit_Player_Front= 1;
+	public static final short Bit_Player_Back= 2;
+	public static final short Bit_land = 4;
+    public static final short Bit_enimes = 8;
+	public static final short Bit_Tool= 16;
 
 
 	//input Strings

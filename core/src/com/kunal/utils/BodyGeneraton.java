@@ -12,7 +12,7 @@ import com.kunal.MainGame;
 
 public class BodyGeneraton {
 
-    public static Body BodyAssemble(World world, Boolean isStatic, String fixtureId, Vector2 initPos, Vector2 dim,short cbit, short mbit){
+    public static Body BodyAssemble(World world, Boolean isStatic, String fixtureId, Vector2 initPos, Vector2 dim,float density, short cbit, short mbit){
         Body b ;
         BodyDef bdef = new BodyDef();
 
@@ -33,7 +33,7 @@ public class BodyGeneraton {
 
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
-        fdef.density=1;
+        fdef.density=density;
         fdef.restitution = 0;
         fdef.friction = 0.3f;
         fdef.filter.categoryBits = cbit;
@@ -141,6 +141,37 @@ public class BodyGeneraton {
 
         fdef.filter.categoryBits = cbit;
         fdef.filter.maskBits = mbit;
+
+        b.createFixture(fdef).setUserData(fixtureId);
+        shape.dispose();
+        return b;
+    }
+
+
+    public static Body BodyAssembleKin(World world, Boolean isStatic, String fixtureId, Vector2 initPos, Vector2 dim,short cbit, short mbit){
+        Body b ;
+        BodyDef bdef = new BodyDef();
+
+        bdef.type = BodyDef.BodyType.KinematicBody;
+
+        bdef.position.set(initPos.x/ MainGame.PPM, initPos.y/MainGame.PPM);
+
+        //bdef.fixedRotation = true;
+
+
+        b = world.createBody(bdef);
+
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(dim.x / MainGame.PPM, dim.y / MainGame.PPM);
+
+        FixtureDef fdef = new FixtureDef();
+        fdef.shape = shape;
+        fdef.density=1;
+        fdef.restitution = 0;
+        fdef.friction = 0.3f;
+        fdef.filter.categoryBits = cbit;
+        fdef.filter.maskBits = mbit;
+
 
         b.createFixture(fdef).setUserData(fixtureId);
         shape.dispose();
