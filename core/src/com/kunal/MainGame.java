@@ -12,7 +12,7 @@ import com.kunal.EveryMenu.TempMenu;
 import java.util.LinkedList;
 
 public class MainGame extends Game {
-	public SpriteBatch batch;
+    public SpriteBatch batch;
 
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;

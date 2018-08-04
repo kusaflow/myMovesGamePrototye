@@ -107,6 +107,12 @@ public class PlayGround implements Screen{
         MainGame.tester.setLinearVelocity(velx, vely);
         MainGame.tester2.setLinearVelocity(velx2, vely2);
 
+        if (Gdx.input.isKeyPressed(Input.Keys.M)){
+            //MainGame.Stomach1.applyLinearImpulse( new Vector2(0,-
+              //      0.3f),MainGame.Stomach1.getWorldCenter(), true);
+            player_moves.walking();
+        }
+
 
     }
 

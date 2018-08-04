@@ -19,12 +19,12 @@ public class objectCreation {
 
     public void bodycreatation(){
         BodyGeneraton.BodyAssemble(world, true, "land", new Vector2(0,-2),
-                new Vector2(500,5),1, MainGame.Bit_land, (short)(MainGame.Bit_enimes | MainGame.Bit_Player_Front | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
+                new Vector2(5000,5),1, MainGame.Bit_land, (short)(MainGame.Bit_enimes | MainGame.Bit_Player_Front | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
         //tester
-        MainGame.tester = BodyGeneraton.BodyAssembleKin(world, true, "test", new Vector2(60,60),
+        MainGame.tester = BodyGeneraton.BodyAssembleKin(world, true, "test", new Vector2(60,150),
                 new Vector2(len,len), (short) (MainGame.Bit_Player_Front | MainGame.Bit_Player_Back), (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Front | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
-        MainGame.tester2 = BodyGeneraton.BodyAssembleKin(world, true, "test", new Vector2(80,60),
+        MainGame.tester2 = BodyGeneraton.BodyAssembleKin(world, true, "test", new Vector2(80,150),
                 new Vector2(len,len), (short) (MainGame.Bit_Player_Front | MainGame.Bit_Player_Back), (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Front | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
 
