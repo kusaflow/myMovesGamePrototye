@@ -28,19 +28,19 @@ public class objectCreation {
                 new Vector2(len,len), (short) (MainGame.Bit_Player_Front | MainGame.Bit_Player_Back), (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Front | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
 
-        MainGame.Front_foot1 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(0,50), new Vector2(len + len,len),1,
+        MainGame.Front_foot1 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(0,50), new Vector2(len + len,len),.5f,
                 MainGame.Bit_Player_Front,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Front | MainGame.Bit_Tool));
 
-        MainGame.Back_foot1 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(0,50), new Vector2(len + len,len),1,
+        MainGame.Back_foot1 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(0,50), new Vector2(len + len,len),.5f,
                 MainGame.Bit_Player_Back,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
-        MainGame.Front_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len*3/*for testin puttin 10 otherwise it is 3*/,len),0.8f,
+        MainGame.Front_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len*3/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
                 MainGame.Bit_Player_Front,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land |MainGame.Bit_Player_Front | MainGame.Bit_Tool));
 
-        MainGame.Back_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len*3/*for testin puttin 10 otherwise it is 3*/,len),0.8f,
+        MainGame.Back_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len*3/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
                 MainGame.Bit_Player_Back,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land |MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
@@ -72,6 +72,24 @@ public class objectCreation {
         MainGame.Stomach3 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4,110), new Vector2(len*2,len*3.5f),0.3f,
                 (short) (MainGame.Bit_Player_Front | MainGame.Bit_Player_Back),
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Front | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
+
+        MainGame.Front_arm = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+                MainGame.Bit_Player_Front,
+                (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
+
+        MainGame.Back_arm = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+                MainGame.Bit_Player_Back,
+                (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
+
+        MainGame.Front_hand = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+                MainGame.Bit_Player_Front,
+                (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
+
+        MainGame.Back_hand = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+                MainGame.Bit_Player_Front,
+                (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
+
+
 
         MainGame.neck = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4,120), new Vector2(len,len*2.5f),0.3f,
                 (short) (MainGame.Bit_Player_Front | MainGame.Bit_Player_Back),
@@ -143,6 +161,44 @@ public class objectCreation {
 
         world.createJoint(rdef);
 
+        rdef.bodyA = MainGame.Front_arm;
+        rdef.localAnchorA.set(0 , (len*3)/MainGame.PPM);
+        rdef.localAnchorB.set(-(len/2)/MainGame.PPM , (len*3)/MainGame.PPM);
+        rdef.upperAngle = (float) (0.5f * Math.PI);
+        rdef.lowerAngle = (float) (-1f * Math.PI);
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = MainGame.Front_hand;
+        rdef.localAnchorA.set(0 , -(len*3)/MainGame.PPM);
+        rdef.localAnchorB.set(0 , (len*3)/MainGame.PPM);
+        rdef.upperAngle = (float) (0.4f * Math.PI);
+        rdef.lowerAngle = 0;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = MainGame.Stomach3;
+        rdef.bodyA = MainGame.Back_arm;
+        rdef.localAnchorA.set(0 , (len*3)/MainGame.PPM);
+        rdef.localAnchorB.set(-(len/2)/MainGame.PPM , (len*3)/MainGame.PPM);
+        rdef.upperAngle = (float) (0.5f * Math.PI);
+        rdef.lowerAngle = (float) (-1f * Math.PI);
+
+        world.createJoint(rdef);
+
+
+        rdef.bodyB = MainGame.Back_hand;
+        rdef.localAnchorA.set(0 , -(len*3)/MainGame.PPM);
+        rdef.localAnchorB.set(0 , (len*3)/MainGame.PPM);
+        rdef.upperAngle = (float) (0.4f * Math.PI);
+        rdef.lowerAngle = 0;
+
+        world.createJoint(rdef);
+
+
+
+
+        rdef.bodyB = MainGame.Stomach3;
         rdef.bodyA = MainGame.neck;
         rdef.localAnchorA.set(0 , -(len*2)/MainGame.PPM);
         rdef.localAnchorB.set(-(len/2)/MainGame.PPM , (len*3)/MainGame.PPM);

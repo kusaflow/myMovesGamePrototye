@@ -80,6 +80,7 @@ public class PlayGround implements Screen{
         cam.update();
 
     }
+    Boolean t = false;
 
     private void input() {
         float velx =0, vely =0;
@@ -108,8 +109,10 @@ public class PlayGround implements Screen{
         MainGame.tester2.setLinearVelocity(velx2, vely2);
 
         if (Gdx.input.isKeyPressed(Input.Keys.M)){
-            //MainGame.Stomach1.applyLinearImpulse( new Vector2(0,-
-              //      0.3f),MainGame.Stomach1.getWorldCenter(), true);
+            t=true;
+            //player_moves.walking();
+        }
+        if (t){
             player_moves.walking();
         }
 
