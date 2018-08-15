@@ -36,11 +36,11 @@ public class objectCreation {
                 MainGame.Bit_Player_Back,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
-        MainGame.Front_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len*3/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
+        MainGame.Front_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
                 MainGame.Bit_Player_Front,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land |MainGame.Bit_Player_Front | MainGame.Bit_Tool));
 
-        MainGame.Back_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len*3/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
+        MainGame.Back_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
                 MainGame.Bit_Player_Back,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land |MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
@@ -119,9 +119,9 @@ public class objectCreation {
 
         rdef.bodyB = MainGame.Front_foot2;
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
-        rdef.localAnchorB.set(-((len*2 + (len/2))/MainGame.PPM),0);
-        rdef.lowerAngle = 0;
-        rdef.upperAngle = (float) (0.2f * Math.PI);
+        rdef.localAnchorB.set(-((len)/MainGame.PPM),0);
+        rdef.lowerAngle = (float) (-0.3f * Math.PI);
+        rdef.upperAngle = (float) (0.02f * Math.PI);
         rdef.enableLimit = true;
 
         world.createJoint(rdef);
@@ -216,7 +216,7 @@ public class objectCreation {
         world.createJoint(rdef);
 
 
-        //bqck joiminh
+        //bqck joiminh---------------------------------------------------------------------------------
         rdef.bodyA = MainGame.Back_foot1;
         rdef.bodyB = MainGame.Back_leg;
         rdef.localAnchorA.set(-(len/MainGame.PPM),0);
@@ -229,9 +229,9 @@ public class objectCreation {
 
         rdef.bodyB = MainGame.Back_foot2;
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
-        rdef.localAnchorB.set(-((len*2 + (len/2))/MainGame.PPM),0);
-        rdef.lowerAngle = 0;
-        rdef.upperAngle = (float) (0.2f * Math.PI);
+        rdef.localAnchorB.set(-((len)/MainGame.PPM),0);
+        rdef.lowerAngle = (float) (-0.3f * Math.PI);
+        rdef.upperAngle = (float) (0.02f * Math.PI);
         rdef.enableLimit = true;
 
         world.createJoint(rdef);

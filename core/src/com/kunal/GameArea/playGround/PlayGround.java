@@ -108,12 +108,14 @@ public class PlayGround implements Screen{
         MainGame.tester.setLinearVelocity(velx, vely);
         MainGame.tester2.setLinearVelocity(velx2, vely2);
 
-        if (Gdx.input.isKeyPressed(Input.Keys.M)){
+        if (Gdx.input.isKeyPressed(Input.Keys.M)
+                  || Gdx.input.justTouched()
+                ){
             t=true;
             //player_moves.walking();
         }
         if (t){
-            player_moves.walking();
+            player_moves.walkingWithBigSteps();
         }
 
 

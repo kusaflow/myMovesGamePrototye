@@ -19,7 +19,8 @@ public class MainGame extends Game {
 
 	public static final float PPM = 50;
 
-	public static float refreshRate = 60;
+
+	public static float refreshRate = 120;
 
 	public static Body tester , tester2;
 	//whole character
@@ -27,6 +28,9 @@ public class MainGame extends Game {
 	//1 is for lower , 2 is upper than 1 and so on
 	public static Body Front_foot1, Front_foot2, Front_leg, Front_Thai, Back_foot1, Back_foot2, Back_leg, Back_Thai,
             Stomach1, Stomach2, Stomach3, neck, head, Front_arm, Back_arm, Front_hand, Back_hand;
+
+	//the current status of movement
+	public static String MovementStats = "none";
 
     //Masks
     public static final short Bit_Player_Front= 1;
