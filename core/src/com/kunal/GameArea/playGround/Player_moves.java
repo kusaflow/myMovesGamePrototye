@@ -7,6 +7,7 @@ public class Player_moves {
 
     private float len = 2;
     private boolean front = true;
+    public static float FootLevel = 0.12f;
 
     private boolean HandsMovingPermission = true;
 
@@ -242,7 +243,7 @@ public class Player_moves {
     }
 
     public void walking(){
-        if (MainGame.Front_foot2.getWorldCenter().y < 0.12f && MainGame.Back_foot2.getWorldCenter().y < 0.12f) {
+        if (MainGame.Front_foot2.getWorldCenter().y < FootLevel && MainGame.Back_foot2.getWorldCenter().y < FootLevel) {
             if(MainGame.Front_foot2.getWorldCenter().x > MainGame.Back_foot2.getWorldCenter().x)
                 front = false;
             else
@@ -251,9 +252,59 @@ public class Player_moves {
 
 
 
+
+        //-------------------------front leg --------------------------
+        if(front){
+
+            MainGame.Back_foot1.applyForceToCenter(0, -20, true);
+
+            MainGame.Stomach1.setLinearVelocity(2,MainGame.Stomach1.getLinearVelocity().y);
+
+            if(MainGame.Front_Thai.getAngle() * (180 / Math.PI) <80)
+                MainGame.Front_Thai.setAngularVelocity(20f);
+
+            if(MainGame.Front_foot2.getPosition().x >= MainGame.Back_foot2.getPosition().x){
+                MainGame.Front_foot2.setLinearVelocity(0, -2);
+                if ((MainGame.Front_foot2.getAngle() * (180/ Math.PI)) < 0){
+                    MainGame.Front_foot2.setAngularVelocity(7);
+                }else {
+                    //MainGame.Front_foot2.setAngularVelocity(0);
+                }
+            }else{
+                MainGame.Front_foot2.setLinearVelocity(0, 10);
+                MainGame.Back_foot2.applyForceToCenter(0, -20, true);
+            }
+
+            //MainGame.Back_leg.setAngularVelocity(-20);
+        }
+
+
+        //---------------Back Leg----------------
+        else{
+
+            MainGame.Front_foot1.applyForceToCenter(0, -20, true);
+
+            MainGame.Stomach1.setLinearVelocity(2,MainGame.Stomach1.getLinearVelocity().y);
+
+            if(MainGame.Back_Thai.getAngle() * (180 / Math.PI) < 80)
+                MainGame.Back_Thai.setAngularVelocity(20f);
+
+
+            if(MainGame.Back_foot2.getPosition().x >= MainGame.Front_foot2.getPosition().x){
+                MainGame.Back_foot2.setLinearVelocity(0, -2);
+
+                if ((MainGame.Back_foot2.getAngle() * (180/ Math.PI)) < 0){
+                    MainGame.Back_foot2.setAngularVelocity(7);
+                }else {
+                    //MainGame.Back_foot2.setAngularVelocity(0);
+                }
+            }else{
+                MainGame.Back_foot2.setLinearVelocity(0, 10);
+                MainGame.Front_foot2.applyForceToCenter(0, -20, true);
+            }
+            //MainGame.Front_leg.setAngularVelocity(-20);
+        }
     }
-
-
 
 
 

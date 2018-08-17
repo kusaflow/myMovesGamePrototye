@@ -36,11 +36,11 @@ public class objectCreation {
                 MainGame.Bit_Player_Back,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
-        MainGame.Front_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
+        MainGame.Front_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len+len/2 ,len),0.5f,
                 MainGame.Bit_Player_Front,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land |MainGame.Bit_Player_Front | MainGame.Bit_Tool));
 
-        MainGame.Back_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len/*for testin puttin 10 otherwise it is 3*/,len),0.5f,
+        MainGame.Back_foot2 = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(8,50), new Vector2(len+len/2 ,len),0.5f,
                 MainGame.Bit_Player_Back,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land |MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
@@ -109,7 +109,7 @@ public class objectCreation {
         rdef.bodyA = MainGame.Front_foot1;
         rdef.bodyB = MainGame.Front_leg;
         rdef.collideConnected = false;
-        rdef.localAnchorA.set(-(len/MainGame.PPM),0);
+        rdef.localAnchorA.set(-((len-(len/2))/MainGame.PPM),0);
         rdef.localAnchorB.set(0,-((len*5 - (len/2))/MainGame.PPM));
         rdef.lowerAngle = (float) (-0.2f * Math.PI);
         rdef.upperAngle = (float) (0.07f * Math.PI);
@@ -119,7 +119,7 @@ public class objectCreation {
 
         rdef.bodyB = MainGame.Front_foot2;
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
-        rdef.localAnchorB.set(-((len)/MainGame.PPM),0);
+        rdef.localAnchorB.set(-((len+len/2)/MainGame.PPM),0);
         rdef.lowerAngle = (float) (-0.3f * Math.PI);
         rdef.upperAngle = (float) (0.02f * Math.PI);
         rdef.enableLimit = true;
@@ -219,7 +219,7 @@ public class objectCreation {
         //bqck joiminh---------------------------------------------------------------------------------
         rdef.bodyA = MainGame.Back_foot1;
         rdef.bodyB = MainGame.Back_leg;
-        rdef.localAnchorA.set(-(len/MainGame.PPM),0);
+        rdef.localAnchorA.set(-((len-(len/2))/MainGame.PPM),0);
         rdef.localAnchorB.set(0,-((len*5 - (len/2))/MainGame.PPM));
         rdef.lowerAngle = (float) (-0.2f * Math.PI);
         rdef.upperAngle = (float) (0.07f * Math.PI);
@@ -229,7 +229,7 @@ public class objectCreation {
 
         rdef.bodyB = MainGame.Back_foot2;
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
-        rdef.localAnchorB.set(-((len)/MainGame.PPM),0);
+        rdef.localAnchorB.set(-((len+len/2)/MainGame.PPM),0);
         rdef.lowerAngle = (float) (-0.3f * Math.PI);
         rdef.upperAngle = (float) (0.02f * Math.PI);
         rdef.enableLimit = true;

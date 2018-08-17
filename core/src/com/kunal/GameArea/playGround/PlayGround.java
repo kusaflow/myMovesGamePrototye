@@ -74,8 +74,8 @@ public class PlayGround implements Screen{
 
         //camera Update
         Vector3 campos = cam.position;
-        campos.x = game.Front_foot1.getPosition().x*game.PPM;
-        campos.y = game.Front_foot1.getPosition().y*game.PPM;
+        campos.x = game.head.getPosition().x*game.PPM;
+        campos.y = game.head.getPosition().y*game.PPM;
         cam.position.set(campos);
         cam.update();
 
@@ -115,7 +115,8 @@ public class PlayGround implements Screen{
             //player_moves.walking();
         }
         if (t){
-            player_moves.walkingWithBigSteps();
+            //player_moves.walkingWithBigSteps();
+            player_moves.walking();
         }
 
 
