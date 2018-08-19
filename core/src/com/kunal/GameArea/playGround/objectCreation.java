@@ -120,8 +120,8 @@ public class objectCreation {
         rdef.bodyB = MainGame.Front_foot2;
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
         rdef.localAnchorB.set(-((len+len/2)/MainGame.PPM),0);
-        rdef.lowerAngle = (float) (-0.3f * Math.PI);
-        rdef.upperAngle = (float) (0.02f * Math.PI);
+        rdef.lowerAngle = 0;
+        rdef.upperAngle = (float) (-0.3f * Math.PI);
         rdef.enableLimit = true;
 
         world.createJoint(rdef);
@@ -230,8 +230,8 @@ public class objectCreation {
         rdef.bodyB = MainGame.Back_foot2;
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
         rdef.localAnchorB.set(-((len+len/2)/MainGame.PPM),0);
-        rdef.lowerAngle = (float) (-0.3f * Math.PI);
-        rdef.upperAngle = (float) (0.02f * Math.PI);
+        rdef.lowerAngle = 0;
+        rdef.upperAngle = (float) (-0.3f * Math.PI);
         rdef.enableLimit = true;
 
         world.createJoint(rdef);

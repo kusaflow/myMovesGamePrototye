@@ -20,6 +20,7 @@ public class MainGame extends Game {
 	public static final float PPM = 50;
 
 
+	public static float FrameAffector = 1;
 	public static float refreshRate = 120;
 
 	public static Body tester , tester2;
@@ -52,6 +53,8 @@ public class MainGame extends Game {
         this.setScreen(new TempMenu(this));
 		dataGivenX.add(10);
         dataGivenY.add(10);
+
+
     }
 
 	@Override
