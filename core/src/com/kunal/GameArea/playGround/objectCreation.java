@@ -73,19 +73,19 @@ public class objectCreation {
                 (short) (MainGame.Bit_Player_Front | MainGame.Bit_Player_Back),
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Player_Front | MainGame.Bit_Player_Back | MainGame.Bit_Tool));
 
-        MainGame.Front_arm = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+        MainGame.Front_arm = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.2f,
                 MainGame.Bit_Player_Front,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
 
-        MainGame.Back_arm = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+        MainGame.Back_arm = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.2f,
                 MainGame.Bit_Player_Back,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
 
-        MainGame.Front_hand = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+        MainGame.Front_hand = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.2f,
                 MainGame.Bit_Player_Front,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
 
-        MainGame.Back_hand = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.5f,
+        MainGame.Back_hand = BodyGeneraton.BodyAssemble(world, false, "player", new Vector2(-4, 100), new Vector2(len , len * 3.5f), 0.2f,
                 MainGame.Bit_Player_Front,
                 (short)(MainGame.Bit_enimes | MainGame.Bit_land | MainGame.Bit_Tool));
 
@@ -121,7 +121,7 @@ public class objectCreation {
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
         rdef.localAnchorB.set(-((len+len/2)/MainGame.PPM),0);
         rdef.lowerAngle = 0;
-        rdef.upperAngle = (float) (-0.3f * Math.PI);
+        rdef.upperAngle = (float) (0.3f * Math.PI);
         rdef.enableLimit = true;
 
         world.createJoint(rdef);
@@ -231,7 +231,7 @@ public class objectCreation {
         rdef.localAnchorA.set((len + len/2)/MainGame.PPM,0);
         rdef.localAnchorB.set(-((len+len/2)/MainGame.PPM),0);
         rdef.lowerAngle = 0;
-        rdef.upperAngle = (float) (-0.3f * Math.PI);
+        rdef.upperAngle = (float) (0.3f * Math.PI);
         rdef.enableLimit = true;
 
         world.createJoint(rdef);
