@@ -114,12 +114,13 @@ public class PlayGround implements Screen{
             t=true;
             //player_moves.walking();
             //player_moves.tester();
+            player_moves.backflip();
 
         }
         if (t){
             //player_moves.walkingWithBigSteps();
             //player_moves.walkingimproper();
-            player_moves.running();
+            //player_moves.running();
         }
 
 
