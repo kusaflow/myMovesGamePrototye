@@ -18,6 +18,9 @@ public class inputManager {
     //comparable value
     int compareVal =0;
 
+    //For tempCal
+    int tmpval=0;
+
     public inputManager() {
     }
 
@@ -55,7 +58,7 @@ public class inputManager {
 
     private void SortedDataToFile() {
         int i = 0;
-        compareVal = 20;
+        compareVal = 10;
         direction = 0;
         //now the sorted data is in downloading process
         DataToFile = "";
@@ -138,14 +141,38 @@ public class inputManager {
             }
 
 
-            /*
+
             //first quadrant code : 1
             if(direction ==1 ){
-                if(MainGame.dataGivenX.get(i+1) - MainGame.dataGivenX.get(i) >= 0)
-                    if(MainGame.dataGivenY.get(i+1) - MainGame.dataGivenY.get(i) >= 0)
+                if(MainGame.dataGivenX.get(i+1) > MainGame.dataGivenX.get(i)){
+                    if(MainGame.dataGivenY.get(i+1) > MainGame.dataGivenY.get(i)){
                         continue;
+                    }else{
+                        if(MainGame.dataGivenY.get(i+2) > MainGame.dataGivenY.get(i+1)){
+                            i++;
+                            continue;
+                        }else{
+                            if(MainGame.dataGivenY.get(i+3) > MainGame.dataGivenY.get(i+2)){
+                                i+=2;
+                                continue;
+                            }
+                        }
+                    }
+                }else{
+                    if(MainGame.dataGivenX.get(i+2) > MainGame.dataGivenX.get(i+1)){
+                        i++;
+                        continue;
+                    }else{
+                        if(MainGame.dataGivenX.get(i+3) > MainGame.dataGivenX.get(i+2)){
+                            i+=2;
+                            continue;
+                        }
+                    }
+                }
+
             }
 
+            /*
             //second quadrant code : 2
             if(direction ==2 ){
                 if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+1) >= 0)
@@ -388,6 +415,28 @@ public class inputManager {
                         }
                     }
                 }
+            }
+
+            //tmp variable to do temp stuffs
+
+            if (direction != 1) {
+                tmpval =0;
+                for(int k =0; k<3;k++){
+                    if(MainGame.dataGivenX.get(i+k+1) > MainGame.dataGivenX.get(i+k)){
+                        tmpval++;
+                    }
+                }
+                if(tmpval == 3){
+                    for(int k =0; k<3;k++){
+                        if(MainGame.dataGivenY.get(i+k+1) > MainGame.dataGivenY.get(i+k)){
+                            tmpval++;
+                        }
+                    }
+                }
+
+                if(tmpval == 6)
+                    direction = 1;
+
             }
 
             /*//any other direction then
