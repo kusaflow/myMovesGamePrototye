@@ -43,32 +43,34 @@ public class inputScreen implements Screen{
 
         game.batch.begin();
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R) || Gdx.input.getY() < 50) {
             file = Gdx.files.local("testing/raw");
             data = file.readString();
 
-            for(int i=0;i<data.length(); i++){
+            for (int i = 0; i < data.length(); i++) {
                 dataRecorder = "";
-                for (; data.charAt(i) != '\n';i++){
-                    dataRecorder+=data.charAt(i);
+                for (; data.charAt(i) != '\n'; i++) {
+                    dataRecorder += data.charAt(i);
                 }
                 String[] tempData = dataRecorder.split("\t");
                 game.batch.draw(points, Integer.parseInt(tempData[0]), Integer.parseInt(tempData[1]));
             }
 
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.S) || Gdx.input.getX() <50) {
             file = Gdx.files.local("testing/sorted");
             data = file.readString();
 
-            for(int i=0;i<data.length(); i++){
+            for (int i = 0; i < data.length(); i++) {
                 dataRecorder = "";
-                for (; data.charAt(i) != '\n';i++){
-                    dataRecorder+=data.charAt(i);
+                for (; data.charAt(i) != '\n'; i++) {
+                    dataRecorder += data.charAt(i);
                 }
                 String[] tempData = dataRecorder.split("\t");
                 game.batch.draw(points, Integer.parseInt(tempData[0]), Integer.parseInt(tempData[1]));
             }
         }
+
+
 
         game.batch.end();
 

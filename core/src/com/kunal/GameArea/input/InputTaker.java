@@ -43,7 +43,7 @@ public class InputTaker implements InputProcessor{
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         //for testing we are putting 50 px difference to toogle betwwen raw and sorted data
         //this is for testing it on mobile device
-        if(screenX > 50 && screenY >120) {
+        if(screenX > 120 && screenY >120) {
             //System.out.println(screenY);
             MainGame.dataGivenX.add(screenX);
             MainGame.dataGivenY.add(screenY);

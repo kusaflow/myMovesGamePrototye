@@ -58,7 +58,7 @@ public class inputManager {
 
     private void SortedDataToFile() {
         int i = 0;
-        compareVal = 10;
+        compareVal = 20;
         direction = 0;
         //now the sorted data is in downloading process
         DataToFile = "";
@@ -142,6 +142,7 @@ public class inputManager {
 
 
 
+            /*
             //first quadrant code : 1
             if(direction ==1 ){
                 if(MainGame.dataGivenX.get(i+1) > MainGame.dataGivenX.get(i)){
@@ -172,7 +173,7 @@ public class inputManager {
 
             }
 
-            /*
+
             //second quadrant code : 2
             if(direction ==2 ){
                 if(MainGame.dataGivenX.get(i) - MainGame.dataGivenX.get(i+1) >= 0)
@@ -417,8 +418,8 @@ public class inputManager {
                 }
             }
 
-            //tmp variable to do temp stuffs
 
+            /*
             if (direction != 1) {
                 tmpval =0;
                 for(int k =0; k<3;k++){
@@ -439,7 +440,7 @@ public class inputManager {
 
             }
 
-            /*//any other direction then
+            any other direction then
             else {
 
             }*/
