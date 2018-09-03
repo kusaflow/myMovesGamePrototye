@@ -128,7 +128,8 @@ public class Player_moves {
         //if(MainGame.Front_foot1.getLinearVelocity().y >= 0)
             //System.out.println(MainGame.Front_foot1.getLinearVelocity().y);
 
-        System.out.println(MainGame.Front_foot2.getWorldCenter().y);
+        //System.out.println(MainGame.Front_foot2.getWorldCenter().y);
+        System.out.println(MainGame.Front_foot2.getLinearVelocity().y);
 
 
     }
@@ -361,7 +362,8 @@ public class Player_moves {
     }
 
     public void tester(){
-        MainGame.Front_foot2.setAngularVelocity(500);
+        MainGame.Front_Thai.setAngularVelocity(-25);
+        System.out.println(MainGame.Front_Thai.getAngle() * (180/Math.PI));
     }
 
     public void running () {
@@ -371,14 +373,17 @@ public class Player_moves {
         //MainGame.Stomach3.setAngularVelocity(-20);
 
         if (MainGame.Front_Thai.getAngle() * (180 / Math.PI) > 50 && MainGame.Back_Thai.getAngle() * (180 / Math.PI) < -25
-                && MainGame.Front_foot2.getWorldCenter().y < FootLevel+0.2f) {
+                && MainGame.Front_foot2.getWorldCenter().y < FootLevel+0.2f && front == true) {
             front = false;
-            //MainGame.Front_foot2.applyForceToCenter(0,20,true);
+            //MainGame.Stomach1.applyForceToCenter(10,0,true);
+            MainGame.Stomach1.setLinearVelocity(10,0);
         }
         if (MainGame.Front_Thai.getAngle() * (180 / Math.PI) < -25 && MainGame.Back_Thai.getAngle() * (180 / Math.PI) > 50
-                && MainGame.Back_foot2.getWorldCenter().y < FootLevel+0.2f){
+                && MainGame.Back_foot2.getWorldCenter().y < FootLevel+0.2f && front == false){
             front = true;
-            //MainGame.Back_foot2.applyForceToCenter(0,20,true);
+            //MainGame.Stomach1.applyForceToCenter(10,0,true);
+            MainGame.Stomach1.setLinearVelocity(10,0);
+
         }
 
        // System.out.println(MainGame.Front_foot2.getWorldCenter().x);
@@ -388,11 +393,11 @@ public class Player_moves {
         if(front){
             //movement of thais
             MainGame.Front_Thai.setAngularVelocity(30);
-            MainGame.Back_Thai.setAngularVelocity(-65);
+            MainGame.Back_Thai.setAngularVelocity(-30);
 
             //movement of leg
             MainGame.Front_leg.setAngularVelocity(-50);
-            //MainGame.Back_leg.setAngularVelocity(0);
+            MainGame.Back_leg.setAngularVelocity(100);
 
 
 
@@ -408,11 +413,11 @@ public class Player_moves {
 
 
         else{
-            MainGame.Front_Thai.setAngularVelocity(-65);
-            MainGame.Back_Thai.setAngularVelocity(35);
+            MainGame.Front_Thai.setAngularVelocity(-30);
+            MainGame.Back_Thai.setAngularVelocity(30);
 
             MainGame.Back_leg.setAngularVelocity(-50);
-            //MainGame.Front_leg.setAngularVelocity(0);
+            MainGame.Front_leg.setAngularVelocity(100);
 
 
 
@@ -425,7 +430,7 @@ public class Player_moves {
 
         }
 
-        System.out.println(MainGame.Front_Thai.getAngle() * (180/Math.PI) + "\t" + MainGame.Back_Thai.getAngle() * (180/Math.PI));
+        //System.out.println(MainGame.Front_Thai.getAngle() * (180/Math.PI) + "\t" + MainGame.Back_Thai.getAngle() * (180/Math.PI));
 
 
 

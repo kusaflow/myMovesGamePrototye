@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.kunal.GameArea.input.inputScreen;
 import com.kunal.GameArea.playGround.PlayGround;
 import com.kunal.MainGame;
+import com.kunal.MovesCreator.MovesCreatorMainScreen;
 
 public class TempMenu implements Screen{
     MainGame game;
@@ -25,7 +26,8 @@ public class TempMenu implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         if(Gdx.input.justTouched()){
-            game.setScreen(new inputScreen(game));
+            //game.setScreen(new inputScreen(game));
+            game.setScreen(new MovesCreatorMainScreen(game));
         }/*
         if(Gdx.input.isTouched()){
             System.out.println(Gdx.input.getX());

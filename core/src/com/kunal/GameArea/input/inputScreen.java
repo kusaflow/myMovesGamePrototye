@@ -43,7 +43,7 @@ public class inputScreen implements Screen{
 
         game.batch.begin();
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.R) || Gdx.input.getY() < 50) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
             file = Gdx.files.local("testing/raw");
             data = file.readString();
 
@@ -56,7 +56,7 @@ public class inputScreen implements Screen{
                 game.batch.draw(points, Integer.parseInt(tempData[0]), Integer.parseInt(tempData[1]));
             }
 
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.S) || Gdx.input.getX() <50) {
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
             file = Gdx.files.local("testing/sorted");
             data = file.readString();
 

@@ -35,7 +35,7 @@ public class BodyGeneraton {
         fdef.shape = shape;
         fdef.density=density;
         fdef.restitution = 0;
-        fdef.friction = 0.3f;
+        fdef.friction = 0.5f;
         fdef.filter.categoryBits = cbit;
         fdef.filter.maskBits = mbit;
 
