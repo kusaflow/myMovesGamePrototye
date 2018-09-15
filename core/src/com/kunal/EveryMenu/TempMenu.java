@@ -26,8 +26,9 @@ public class TempMenu implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         if(Gdx.input.justTouched()){
-            //game.setScreen(new inputScreen(game));
+            game.setScreen(new inputScreen(game));
             game.setScreen(new MovesCreatorMainScreen(game));
+            game.setScreen(new PlayGround(game));
         }/*
         if(Gdx.input.isTouched()){
             System.out.println(Gdx.input.getX());

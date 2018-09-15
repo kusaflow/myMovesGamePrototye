@@ -129,7 +129,7 @@ public class Player_moves {
             //System.out.println(MainGame.Front_foot1.getLinearVelocity().y);
 
         //System.out.println(MainGame.Front_foot2.getWorldCenter().y);
-        System.out.println(MainGame.Front_foot2.getLinearVelocity().y);
+        //System.out.println(MainGame.Front_foot2.getLinearVelocity().y);
 
 
     }
@@ -397,7 +397,7 @@ public class Player_moves {
 
             //movement of leg
             MainGame.Front_leg.setAngularVelocity(-50);
-            MainGame.Back_leg.setAngularVelocity(100);
+            //MainGame.Back_leg.setAngularVelocity(100);
 
 
 
@@ -417,7 +417,7 @@ public class Player_moves {
             MainGame.Back_Thai.setAngularVelocity(30);
 
             MainGame.Back_leg.setAngularVelocity(-50);
-            MainGame.Front_leg.setAngularVelocity(100);
+            //MainGame.Front_leg.setAngularVelocity(100);
 
 
 
