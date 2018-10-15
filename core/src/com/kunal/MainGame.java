@@ -23,7 +23,7 @@ public class MainGame extends Game {
 
 
 	public static float FrameAffector = 1;
-	public static float refreshRate = 60;
+	public static float refreshRate = 120;
 
 	public static Body tester , tester2;
 	//whole character

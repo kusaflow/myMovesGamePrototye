@@ -81,12 +81,12 @@ public class Player_moves {
         if ((MainGame.Stomach1.getAngle() * (180/Math.PI))> 1f) {
             MainGame.Stomach1.applyForce(new Vector2(MainGame.Stomach1.getAngle()/(MainGame.PPM/3),0), new Vector2(MainGame.Stomach1.getWorldCenter().x,MainGame.Stomach1.getWorldCenter().y + len*5), true);
         }
-        if ((MainGame.Stomach1.getAngle() * (180/Math.PI)) < -2f) {
+        if ((MainGame.Stomach1.getAngle() * (180/Math.PI)) <=1f) {
             MainGame.Stomach1.applyForce(new Vector2(MainGame.Stomach1.getAngle()/(MainGame.PPM/3),0), new Vector2(MainGame.Stomach1.getWorldCenter().x,MainGame.Stomach1.getWorldCenter().y + len*5), true);
         }
 
 
-        if ((MainGame.Stomach2.getAngle() * (180/Math.PI)) < -15f) {
+        if ((MainGame.Stomach2.getAngle() * (180/Math.PI)) <= -2f) {
             MainGame.Stomach2.applyForce(new Vector2(MainGame.Stomach2.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.Stomach2.getWorldCenter().x,MainGame.Stomach2.getWorldCenter().y + len*5), true);
         }
 
@@ -94,7 +94,7 @@ public class Player_moves {
             MainGame.Stomach2.applyForce(new Vector2(MainGame.Stomach2.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.Stomach2.getWorldCenter().x,MainGame.Stomach2.getWorldCenter().y + len*5), true);
         }
 
-        if ((MainGame.Stomach3.getAngle() * (180/Math.PI)) < -15f) {
+        if ((MainGame.Stomach3.getAngle() * (180/Math.PI)) <= -2f) {
             MainGame.Stomach3.applyForce(new Vector2(MainGame.Stomach3.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.Stomach3.getWorldCenter().x,MainGame.Stomach3.getWorldCenter().y + len*5), true);
         }
 
@@ -102,19 +102,19 @@ public class Player_moves {
             MainGame.Stomach3.applyForce(new Vector2(MainGame.Stomach3.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.Stomach3.getWorldCenter().x,MainGame.Stomach3.getWorldCenter().y + len*5), true);
         }
 
-        if ((MainGame.neck.getAngle() * (180/Math.PI)) < -3f) {
+        if ((MainGame.neck.getAngle() * (180/Math.PI)) < -1f) {
             MainGame.neck.applyForce(new Vector2(MainGame.neck.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.neck.getWorldCenter().x,MainGame.neck.getWorldCenter().y + len*5), true);
         }
 
-        if ((MainGame.neck.getAngle() * (180/Math.PI)) > 2) {
+        if ((MainGame.neck.getAngle() * (180/Math.PI)) > -1) {
             MainGame.neck.applyForce(new Vector2(MainGame.neck.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.neck.getWorldCenter().x,MainGame.neck.getWorldCenter().y + len*5), true);
         }
 
-        if ((MainGame.head.getAngle() * (180/Math.PI)) < -3f) {
+        if ((MainGame.head.getAngle() * (180/Math.PI)) < -1f) {
             MainGame.head.applyForce(new Vector2(MainGame.head.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.head.getWorldCenter().x,MainGame.head.getWorldCenter().y + len*5), true);
         }
 
-        if ((MainGame.head.getAngle() * (180/Math.PI)) > 2) {
+        if ((MainGame.head.getAngle() * (180/Math.PI)) > -1) {
             MainGame.head.applyForce(new Vector2(MainGame.head.getAngle()/(MainGame.PPM/2),0), new Vector2(MainGame.head.getWorldCenter().x,MainGame.head.getWorldCenter().y + len*5), true);
         }
 
@@ -130,6 +130,10 @@ public class Player_moves {
 
         //System.out.println(MainGame.Front_foot2.getWorldCenter().y);
         //System.out.println(MainGame.Front_foot2.getLinearVelocity().y);
+        //System.out.println(MainGame.Front_Thai.getAngle() * (180/Math.PI));
+        System.out.println(MainGame.Stomach1.getAngle() * (180/Math.PI));
+
+
 
 
     }
@@ -362,41 +366,58 @@ public class Player_moves {
     }
 
     public void tester(){
-        MainGame.Front_Thai.setAngularVelocity(-25);
-        System.out.println(MainGame.Front_Thai.getAngle() * (180/Math.PI));
+        //else if(MainGame.Front_Thai.getAngle() * (180/Math.PI) > 60)
+            MainGame.Stomach1.setAngularVelocity(-30);
+
+
+        //System.out.println(MainGame.Front_Thai.getAngle() * (180/Math.PI));
     }
 
     public void running () {
 
-        //MainGame.Stomach1.setAngularVelocity(-30);
-        //MainGame.Stomach2.setAngularVelocity(-20);
-        //MainGame.Stomach3.setAngularVelocity(-20);
+        MainGame.Stomach1.setAngularVelocity(-13);
+        MainGame.Stomach2.setAngularVelocity(-13);
+        MainGame.Stomach3.setAngularVelocity(-13);
 
-        if (MainGame.Front_Thai.getAngle() * (180 / Math.PI) > 50 && MainGame.Back_Thai.getAngle() * (180 / Math.PI) < -25
-                && MainGame.Front_foot2.getWorldCenter().y < FootLevel+0.2f && front == true) {
+
+
+
+        if(MainGame.Front_Thai.getAngle() * (180 / Math.PI) > 68 + MainGame.Stomach1.getAngle() * (180/Math.PI)
+                && MainGame.Back_Thai.getAngle() * (180 / Math.PI) < -20 - MainGame.Stomach1.getAngle() * (180/Math.PI)/2
+                && MainGame.Front_foot2.getWorldCenter().y < FootLevel+0.2f && front == true
+                && (int)(MainGame.Back_foot1.getLinearVelocity().y) ==0) {
             front = false;
-            //MainGame.Stomach1.applyForceToCenter(10,0,true);
-            MainGame.Stomach1.setLinearVelocity(10,0);
+            //MainGame.Stomach1.applyForceToCenter(15,0,true);
+            MainGame.Stomach1.setLinearVelocity(7*MainGame.FrameAffector,0);
         }
-        if (MainGame.Front_Thai.getAngle() * (180 / Math.PI) < -25 && MainGame.Back_Thai.getAngle() * (180 / Math.PI) > 50
-                && MainGame.Back_foot2.getWorldCenter().y < FootLevel+0.2f && front == false){
-            front = true;
-            //MainGame.Stomach1.applyForceToCenter(10,0,true);
-            MainGame.Stomach1.setLinearVelocity(10,0);
+        if (MainGame.Front_Thai.getAngle() * (180 / Math.PI) < -20 - MainGame.Stomach1.getAngle() * (180/Math.PI)/2
+                && MainGame.Back_Thai.getAngle() * (180 / Math.PI) > 68 + MainGame.Stomach1.getAngle() * (180/Math.PI)
+                && MainGame.Back_foot2.getWorldCenter().y < FootLevel+0.2f && front == false
+                && (int)(MainGame.Front_foot1.getLinearVelocity().y) ==0) {
+                front = true;
+            //MainGame.Stomach1.applyForceToCenter(15,0,true);
+            MainGame.Stomach1.setLinearVelocity(7*MainGame.FrameAffector,0);
 
         }
 
-       // System.out.println(MainGame.Front_foot2.getWorldCenter().x);
+        //System.out.println(MainGame.Front_Thai.getAngle()*(180/Math.PI) + "\t\t" + MainGame.Back_Thai.getAngle()*(180/Math.PI));
+        //System.out.println(MainGame.Front_Thai.getAngle() * (180/Math.PI) + "\t" + MainGame.Back_Thai.getAngle() * (180 / Math.PI));
 
 
 
         if(front){
             //movement of thais
-            MainGame.Front_Thai.setAngularVelocity(30);
-            MainGame.Back_Thai.setAngularVelocity(-30);
+            if(MainGame.Front_Thai.getAngle() * (180/Math.PI) < 65) {
+                MainGame.Front_Thai.setAngularVelocity(43 * MainGame.FrameAffector);
+                //MainGame.Stomach1.setLinearVelocity(0,-5);
+            }else{
+                //MainGame.Stomach1.applyForceToCenter(0,-5, true);
+            }
+            if(MainGame.Back_Thai.getAngle() * (180/Math.PI) > -25)
+                MainGame.Back_Thai.setAngularVelocity(-30*MainGame.FrameAffector);
 
             //movement of leg
-            MainGame.Front_leg.setAngularVelocity(-50);
+            MainGame.Front_leg.setAngularVelocity(-50*MainGame.FrameAffector);
             //MainGame.Back_leg.setAngularVelocity(100);
 
 
@@ -404,6 +425,7 @@ public class Player_moves {
             //downward force by foots
             if(MainGame.Front_foot2.getWorldCenter().x > MainGame.Back_foot2.getWorldCenter().x){
                 MainGame.Back_foot2.applyForceToCenter(0,-10, true);
+                MainGame.Front_foot1.applyForceToCenter(0,-2, true);
             }else{
                 MainGame.Back_foot1.applyForceToCenter(0,-5, true);
             }
@@ -413,10 +435,16 @@ public class Player_moves {
 
 
         else{
-            MainGame.Front_Thai.setAngularVelocity(-30);
-            MainGame.Back_Thai.setAngularVelocity(30);
+            if(MainGame.Front_Thai.getAngle() * (180/Math.PI) > -25)
+                MainGame.Front_Thai.setAngularVelocity(-30*MainGame.FrameAffector);
+            if(MainGame.Back_Thai.getAngle() * (180/Math.PI) < 65) {
+                MainGame.Back_Thai.setAngularVelocity(43 * MainGame.FrameAffector);
+                //MainGame.Stomach1.setLinearVelocity(0,-5);
+            }else{
+                //MainGame.Stomach1.applyForceToCenter(0,-5, true);
+            }
 
-            MainGame.Back_leg.setAngularVelocity(-50);
+            MainGame.Back_leg.setAngularVelocity(-50*MainGame.FrameAffector);
             //MainGame.Front_leg.setAngularVelocity(100);
 
 
@@ -424,6 +452,7 @@ public class Player_moves {
             //downward force by foots
             if(MainGame.Front_foot2.getWorldCenter().x < MainGame.Back_foot2.getWorldCenter().x){
                 MainGame.Front_foot2.applyForceToCenter(0,-10, true);
+                MainGame.Front_foot1.applyForceToCenter(0,-2, true);
             }else{
                 MainGame.Front_foot1.applyForceToCenter(0,-5, true);
             }
@@ -437,6 +466,7 @@ public class Player_moves {
 
 
     }
+
 
     public void backflip(){
 

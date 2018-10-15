@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.kunal.EveryMenu.TempMenu;
 import com.kunal.MainGame;
 import com.kunal.utils.BodyGeneraton;
 
@@ -43,6 +44,7 @@ public class PlayGround implements Screen{
         objcre.joints();
 
         player_moves = new Player_moves();
+
     }
 
 
@@ -64,7 +66,8 @@ public class PlayGround implements Screen{
 
     private void update(float dt) {
         input();
-        player_moves.balancer();
+            player_moves.balancer();
+
 
         //update of world
         //if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
@@ -108,6 +111,10 @@ public class PlayGround implements Screen{
         MainGame.tester.setLinearVelocity(velx, vely);
         MainGame.tester2.setLinearVelocity(velx2, vely2);
 
+        if(Gdx.input.isKeyJustPressed(Input.Keys.B))
+            game.setScreen(new TempMenu(game));
+
+
         if (Gdx.input.isKeyPressed(Input.Keys.M)
                   || Gdx.input.justTouched()
                 ){
@@ -115,6 +122,7 @@ public class PlayGround implements Screen{
             //player_moves.walking();
             //player_moves.tester();
             //player_moves.backflip();
+            //player_moves.running();
 
         }
         if (t){
