@@ -11,9 +11,12 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.kunal.AllVariables;
 import com.kunal.EveryMenu.TempMenu;
 import com.kunal.MainGame;
 import com.kunal.utils.BodyGeneraton;
+
+import java.time.chrono.MinguoChronology;
 
 public class PlayGround implements Screen{
 
@@ -51,7 +54,7 @@ public class PlayGround implements Screen{
 
     @Override
     public void show() {
-
+        AllVariables.stuntStep = 1;
     }
 
     @Override
@@ -66,6 +69,8 @@ public class PlayGround implements Screen{
 
     private void update(float dt) {
         input();
+
+        if(AllVariables.BalancingPlayer)
             player_moves.balancer();
 
 
@@ -77,8 +82,8 @@ public class PlayGround implements Screen{
 
         //camera Update
         Vector3 campos = cam.position;
-        campos.x = game.head.getPosition().x*game.PPM;
-        campos.y = game.head.getPosition().y*game.PPM;
+        campos.x = AllVariables.head.getPosition().x*game.PPM;
+        campos.y = AllVariables.head.getPosition().y*game.PPM;
         cam.position.set(campos);
         cam.update();
 
@@ -108,11 +113,12 @@ public class PlayGround implements Screen{
             vely2 +=1;
         }
 
-        MainGame.tester.setLinearVelocity(velx, vely);
-        MainGame.tester2.setLinearVelocity(velx2, vely2);
+        AllVariables.tester.setLinearVelocity(velx, vely);
+        AllVariables.tester2.setLinearVelocity(velx2, vely2);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.B))
             game.setScreen(new TempMenu(game));
+
 
 
         if (Gdx.input.isKeyPressed(Input.Keys.M)
@@ -120,7 +126,7 @@ public class PlayGround implements Screen{
                 ){
             t=true;
             //player_moves.walking();
-            //player_moves.tester();
+            player_moves.tester();
             //player_moves.backflip();
             //player_moves.running();
 
@@ -128,8 +134,28 @@ public class PlayGround implements Screen{
         if (t){
             //player_moves.walkingWithBigSteps();
             //player_moves.walkingimproper();
-            player_moves.running();
+            //player_moves.running();
+
         }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.O)) {
+            AllVariables.BalancingPlayer = false;
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+            AllVariables.BalancingPlayer = true;
+        }
+
+
+
+            //moves like flips
+        if(Gdx.input.isKeyJustPressed(Input.Keys.F)){
+            AllVariables.stuntStep = 1;
+            AllVariables.BackFlip = true;
+        }
+
+        if(AllVariables.BackFlip)
+            player_moves.backflip();
 
 
     }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.kunal.AllVariables;
 import com.kunal.GameArea.playGround.Player_moves;
 import com.kunal.GameArea.playGround.objectCreation;
 import com.kunal.MainGame;
@@ -102,8 +103,8 @@ public class MovesCreatorMainScreen implements Screen {
 
         //camera Update
         Vector3 campos = cam.position;
-        campos.x = game.head.getPosition().x*game.PPM;
-        campos.y = game.head.getPosition().y*game.PPM;
+        campos.x = AllVariables.head.getPosition().x*game.PPM;
+        campos.y = AllVariables.head.getPosition().y*game.PPM;
         cam.position.set(campos);
         cam.update();
 
