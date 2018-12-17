@@ -126,7 +126,7 @@ public class PlayGround implements Screen{
                 ){
             t=true;
             //player_moves.walking();
-            //player_moves.tester();
+            player_moves.tester();
             //player_moves.backflip();
             player_moves.running();
 
@@ -146,11 +146,14 @@ public class PlayGround implements Screen{
             AllVariables.BalancingPlayer = true;
         }
 
-
+        if(Gdx.input.isKeyJustPressed(Input.Keys.T)){
+            AllVariables.stuntStep = 0;
+            AllVariables.BackFlip = false;
+        }
 
             //moves like flips
         if(Gdx.input.isKeyJustPressed(Input.Keys.F)){
-            AllVariables.stuntStep = 1;
+            AllVariables.stuntStep = 0;
             AllVariables.BackFlip = true;
         }
 

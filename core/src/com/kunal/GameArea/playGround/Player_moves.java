@@ -54,9 +54,9 @@ public class Player_moves {
         }
 
         if(AllVariables.Front_foot1_Balance) {
-            if (AllVariables.Front_foot1.getAngle() * (180 / Math.PI) < 0) {
-                AllVariables.Front_foot1.setAngularVelocity(200);
-            }
+            /*if (AllVariables.Front_foot1.getAngle() * (180 / Math.PI) < 0) {
+                //AllVariables.Front_foot1.setAngularVelocity(200);
+            }*/
             AllVariables.Back_foot1.setLinearVelocity(0,-1f);
         }
 
@@ -90,9 +90,10 @@ public class Player_moves {
         }
 
         if(AllVariables.Back_foot1_Balance) {
-            if (AllVariables.Back_foot1.getAngle() * (180 / Math.PI) < 0) {
-                AllVariables.Back_foot1.setAngularVelocity(200);
+            /*if (AllVariables.Back_foot1.getAngle() * (180 / Math.PI) < 0) {
+                //AllVariables.Back_foot1.setAngularVelocity(200);
             }
+            */
             AllVariables.Back_foot1.setLinearVelocity(0,-1f);
         }
 
@@ -146,11 +147,6 @@ public class Player_moves {
                 AllVariables.head.applyForce(new Vector2(AllVariables.head.getAngle() / (MainGame.PPM / 2), 0), new Vector2(AllVariables.head.getWorldCenter().x, AllVariables.head.getWorldCenter().y + len * 5), true);
             }
         }
-
-    }
-
-    private void display(){
-        //System.out.println(AllVariables.Front_Thai.getAngle() * (180/Math.PI));
 
     }
 
@@ -382,20 +378,20 @@ public class Player_moves {
     }
 
     public void tester(){
-        AllVariables.Front_leg.setAngularVelocity(-30);
-        AllVariables.Back_leg.setAngularVelocity(-30);
-        AllVariables.Stomach1.setLinearVelocity(0,-5);
+        //AllVariables.Back_leg_Balance = false;
+        //AllVariables.Back_leg.setAngularVelocity(-50);
+
+
 
 
     }
 
-    public void running () {
+    // non usable but there only for refference purposes
+    public void runningNonUsable () {
 
         AllVariables.Stomach1.setAngularVelocity(-13);
         AllVariables.Stomach2.setAngularVelocity(-13);
         AllVariables.Stomach3.setAngularVelocity(-13);
-
-
 
 
         if(AllVariables.Front_Thai.getAngle() * (180 / Math.PI) > 68 + AllVariables.Stomach1.getAngle() * (180/Math.PI)
@@ -490,17 +486,74 @@ public class Player_moves {
     }
 
 
+    public void running () {
+        // positive angular velocity leads to right direction
+        // and
+        // negative to the left
+
+
+    }
+
+    private void display(){
+        System.out.println(AllVariables.Front_leg.getAngle() * (180/Math.PI));
+
+    }
+
+    /*
+    documentation for how backflip should work
+    -- dividing by steps
+        steps are as follows:
+        allignment function
+        1.bending down
+        2.jumping
+        3.half way rotaion in air
+        4.full rotation with moving downwards
+        5. not adding now but can add in future to give flow to the character to run and maintain that flow
+
+     */
     public void backflip () {
 
-        //Step Assigner
+    //----------------Step Assigner
+        //allignment function
+        if(AllVariables.shouldmoveToNextStep == false){
 
-        //stepwise moves over here
+        }
+        //when this statement AllVariables.shouldmoveToNextStep gets true then the step 1 is proceded
+
+
+        //when initial posision is reached now move to step 1
+        if(AllVariables.stuntStep == 0 && AllVariables.shouldmoveToNextStep == true){
+            AllVariables.stuntStep = 1;
+        }
+
+
+    //-----------------stepwise moves over here
+        //1. bending down
         if(AllVariables.stuntStep == 1){
+            //bending legs
+            AllVariables.Stomach1.setAngularVelocity(-100);
+            AllVariables.Stomach3.setAngularVelocity(20);
+
+            AllVariables.Back_foot1.applyForceToCenter(0,-10,true);
+            AllVariables.Front_foot1.applyForceToCenter(0,-10,true);
+            AllVariables.Back_foot2.applyForceToCenter(0,-7,true);
+            AllVariables.Front_foot2.applyForceToCenter(0,-7,true);
+
+            if (AllVariables.Back_leg.getAngle() * (180/Math.PI) > -16)
+                AllVariables.Back_leg.setAngularVelocity(-15);
+            if (AllVariables.Front_leg.getAngle() * (180/Math.PI) > -16)
+                AllVariables.Front_leg.setAngularVelocity(-15);
+
+            AllVariables.Back_Thai.setAngularVelocity(20);
+            AllVariables.Front_Thai.setAngularVelocity(20);
+
+            AllVariables.Back_hand.setAngularVelocity(-50);
+            AllVariables.Front_hand.setAngularVelocity(-50);
 
         }
 
         else if(AllVariables.stuntStep == 2){
-            AllVariables.BackFlip = false;
+
         }
 
     }

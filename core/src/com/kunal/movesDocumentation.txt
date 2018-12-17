@@ -1,0 +1,18 @@
+---------------Back Flip----------------------
+    documentation for how backflip should work
+    -- dividing by steps
+        steps are as follows:
+        first the allighnment function is called to allign the legs together an then as follows
+            ideal state positions
+
+        1.bending down
+            bending thai 60 deg wrt legs ()and
+            legs 20 deg wrt land and (-15)
+            also moving hands backwards 90 deg wrt chest
+            and rotating chest 90 deg wrt thai
+        2.jumping
+        3.half way rotaion in air
+        4.full rotation with moving downwards
+        5. not adding now but can add in future to give flow to the character to run and maintain that flow
+
+

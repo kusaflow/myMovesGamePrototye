@@ -10,6 +10,9 @@ public class AllVariables {
     // every move is divided in steps
     public static byte stuntStep = 1;
 
+    //should move to next step
+    public static boolean shouldmoveToNextStep = false;
+
     //this varibale shows if the balancing should be applied or not
     public static boolean BalancingPlayer = true;
 
