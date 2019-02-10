@@ -495,7 +495,9 @@ public class Player_moves {
     }
 
     private void display(){
-        System.out.println(AllVariables.Front_leg.getAngle() * (180/Math.PI));
+        System.out.print(AllVariables.Back_foot1.getPosition().x + "\t");
+        System.out.println(AllVariables.Front_foot1.getWorldCenter().x);
+
 
     }
 
@@ -516,6 +518,23 @@ public class Player_moves {
     //----------------Step Assigner
         //allignment function
         if(AllVariables.shouldmoveToNextStep == false){
+            //for now just making them alighn after standing position
+            // because dont know walking or runnning machenism
+            if(AllVariables.Back_foot1.getWorldCenter().x - AllVariables.Front_foot1.getWorldCenter().x > 0.03
+                    && AllVariables.Back_foot1.getWorldCenter().x - AllVariables.Front_foot1.getWorldCenter().x < 0.09){
+               AllVariables.shouldmoveToNextStep =true;
+            }else{
+                AllVariables.Back_foot1.setLinearVelocity(-2,0);
+                AllVariables.Front_foot1.setLinearVelocity(2,0);
+            }
+
+            if(AllVariables.Front_foot1.getWorldCenter().x - AllVariables.Back_foot1.getWorldCenter().x > 0.03
+                    && AllVariables.Front_foot1.getWorldCenter().x - AllVariables.Back_foot1.getWorldCenter().x < 0.09){
+                AllVariables.shouldmoveToNextStep =true;
+            }else{
+                AllVariables.Back_foot1.setLinearVelocity(2,0);
+                AllVariables.Front_foot1.setLinearVelocity(-2,0);
+            }
 
         }
         //when this statement AllVariables.shouldmoveToNextStep gets true then the step 1 is proceded
@@ -524,6 +543,19 @@ public class Player_moves {
         //when initial posision is reached now move to step 1
         if(AllVariables.stuntStep == 0 && AllVariables.shouldmoveToNextStep == true){
             AllVariables.stuntStep = 1;
+        }
+        if(AllVariables.stuntStep == 1
+                && AllVariables.Stomach1.getAngle() * (180/Math.PI) < -30
+                && AllVariables.Stomach2.getAngle() * (180/Math.PI) < -20
+                && AllVariables.Stomach3.getAngle() * (180/Math.PI) < -20
+                && AllVariables.Back_leg.getAngle() * (180/Math.PI) < -15
+                && AllVariables.Front_leg.getAngle() * (180/Math.PI) < -15
+                && AllVariables.Back_Thai.getAngle() * (180/Math.PI) > 45
+                && AllVariables.Front_Thai.getAngle() * (180/Math.PI) > 45
+                && AllVariables.Back_hand.getAngle() * (180/Math.PI) < -110
+                && AllVariables.Front_hand.getAngle() * (180/Math.PI) < -110
+                ){
+            AllVariables.stuntStep = 2;
         }
 
 
@@ -539,9 +571,9 @@ public class Player_moves {
             AllVariables.Back_foot2.applyForceToCenter(0,-7,true);
             AllVariables.Front_foot2.applyForceToCenter(0,-7,true);
 
-            if (AllVariables.Back_leg.getAngle() * (180/Math.PI) > -16)
+            if (AllVariables.Back_leg.getAngle() * (180/Math.PI) > -20)
                 AllVariables.Back_leg.setAngularVelocity(-15);
-            if (AllVariables.Front_leg.getAngle() * (180/Math.PI) > -16)
+            if (AllVariables.Front_leg.getAngle() * (180/Math.PI) > -18)
                 AllVariables.Front_leg.setAngularVelocity(-15);
 
             AllVariables.Back_Thai.setAngularVelocity(20);

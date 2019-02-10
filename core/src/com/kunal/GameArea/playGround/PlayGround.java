@@ -54,7 +54,9 @@ public class PlayGround implements Screen{
 
     @Override
     public void show() {
-        AllVariables.stuntStep = 1;
+        AllVariables.stuntStep =0;
+        AllVariables.BackFlip = false;
+        AllVariables.shouldmoveToNextStep = false;
     }
 
     @Override
@@ -155,6 +157,7 @@ public class PlayGround implements Screen{
         if(Gdx.input.isKeyJustPressed(Input.Keys.F)){
             AllVariables.stuntStep = 0;
             AllVariables.BackFlip = true;
+            AllVariables.shouldmoveToNextStep = false;
         }
 
         if(AllVariables.BackFlip)
